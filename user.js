@@ -3,6 +3,7 @@
 // @namespace    http://felixfischer.com/
 // @version      1.0.1
 // @description  Adds a shortlink to Amazon product pages
+// @supportURL   https://github.com/felixfischer/show-amazon-shortlinks/issues
 // @author       Felix Fischer
 // @include      *.amazon.*
 // @grant        GM_setClipboard
