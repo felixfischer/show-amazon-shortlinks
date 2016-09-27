@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         Amazon Short Links
 // @namespace    http://felixfischer.com/
-// @version      1.0.1
+// @version      1.1
 // @description  Adds a shortlink to Amazon product pages
 // @supportURL   https://github.com/felixfischer/show-amazon-shortlinks/issues
 // @author       Felix Fischer
-// @include      *.amazon.*
+// @include      *www.amazon.*
+// @include      *smile.amazon.*
 // @grant        GM_setClipboard
 // ==/UserScript==
 
@@ -14,6 +15,7 @@
     var ASIN = doc.getElementById("ASIN") || doc.getElementsByName("ASIN.0")[0];
     if (ASIN) {
         ASIN = ASIN.value;
+        history.replaceState(null, "", "/dp/" + ASIN);
         var TLD = window.location.hostname.split('.').pop();
         var URL = `amzn.${TLD}/dp/${ASIN}`;
         var html = `<div class="a-spacing-large a-text-center a-size-mini" id="my-shortlink">
