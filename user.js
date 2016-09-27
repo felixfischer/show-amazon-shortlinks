@@ -19,7 +19,7 @@
         var TLD = window.location.hostname.split('.').pop();
         var URL = `amzn.${TLD}/dp/${ASIN}`;
         var html = `<div class="a-spacing-large a-text-center a-size-mini" id="my-shortlink">
-                        <a href="http://${URL}" onclick="return false" class="">${URL}</a>
+                        <a href="http://${URL}" onclick="return false" title="click to copy">${URL}</a>
                     </div>`;
         var pos = document.getElementById('tell-a-friend');
         pos.insertAdjacentHTML('afterend', html);
