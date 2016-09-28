@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Amazon Shortlinks
 // @namespace    https://github.com/felixfischer/show-amazon-shortlinks
-// @version      1.2
+// @version      1.3
 // @description  Adds a shortlink to Amazon product pages
 // @supportURL   https://github.com/felixfischer/show-amazon-shortlinks/issues
 // @author       Felix Fischer
@@ -16,16 +16,22 @@
     if (ASIN) {
         ASIN = ASIN.value;
         history.replaceState(null, "", "/dp/" + ASIN);
-        var TLD = window.location.hostname.split('.').pop();
-        var URL = `amzn.${TLD}/dp/${ASIN}`;
-        var html = `<div class="a-spacing-large a-text-center a-size-mini" id="my-shortlink">
-                        <a href="http://${URL}" onclick="return false" title="click to copy">${URL}</a>
-                    </div>`;
+        var amznTLDs = ['com', 'co.uk', 'de', 'fr'];
+        var noDpTLDs = ['com'];
+        var domainParts = window.location.hostname.split('.');
+        var TLD = domainParts.slice( domainParts.indexOf('amazon')+1 ).join('.');
+        var SLD = amznTLDs.includes(TLD) ? 'amzn' : 'amazon';
+        var pre = noDpTLDs.includes(TLD) ? '' : 'dp/';
+        var URL = `${SLD}.${TLD}/${pre}${ASIN}`;
+        var html =
+            `<div class="a-spacing-large a-text-center" id="my-shortlink" title="click to copy">
+                <a href="https://${URL}" onclick="return false">${URL}</a>
+            </div>`;
         var pos = document.getElementById('tell-a-friend');
         pos.insertAdjacentHTML('afterend', html);
         var el = document.getElementById('my-shortlink');
         el.onclick = function() {
-            GM_setClipboard('http://'+URL);
+            GM_setClipboard('https://' + URL);
         };
     }
 
