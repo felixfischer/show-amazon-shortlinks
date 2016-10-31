@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Amazon Shortlinks
 // @namespace    https://github.com/felixfischer/show-amazon-shortlinks
-// @version      1.3
+// @version      1.4
 // @description  Adds a shortlink to Amazon product pages
 // @supportURL   https://github.com/felixfischer/show-amazon-shortlinks/issues
 // @author       Felix Fischer
@@ -31,7 +31,7 @@
         pos.insertAdjacentHTML('afterend', html);
         var el = document.getElementById('my-shortlink');
         el.onclick = function() {
-            GM_setClipboard('https://' + URL);
+            GM_setClipboard('http://' + URL);
         };
     }
 
