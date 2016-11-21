@@ -25,7 +25,7 @@
         var URL = `${SLD}.${TLD}/${pre}${ASIN}`;
         var html =
             `<div class="a-spacing-large a-text-center" id="my-shortlink" title="click to copy">
-                <a href="https://${URL}" onclick="return false">${URL}</a>
+                <a href="http://${URL}" onclick="return false">${URL}</a>
             </div>`;
         var pos = document.getElementById('tell-a-friend');
         pos.insertAdjacentHTML('afterend', html);
