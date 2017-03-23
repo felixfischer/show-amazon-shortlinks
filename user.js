@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Amazon Shortlinks
 // @namespace    https://github.com/felixfischer/show-amazon-shortlinks
-// @version      1.4
+// @version      1.5
 // @description  Adds a shortlink to Amazon product pages
 // @supportURL   https://github.com/felixfischer/show-amazon-shortlinks/issues
 // @author       Felix Fischer
